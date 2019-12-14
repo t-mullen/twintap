@@ -1,6 +1,6 @@
 {
   "name": "twintap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "airtap for pairwise interoperability testing.",
   "main": "lib/twintap.js",
   "bin": {
