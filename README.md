@@ -9,7 +9,7 @@ npm install -g twintap
 
 ## Usage
 
-Write tests like tape [`tape`](https://github.com/substack/tape), except use `twintap/tape` and pass an array of two test functions.
+Write tests like [`tape`](https://github.com/substack/tape), except use `twintap/tape` and pass an array of two test functions.
 ```javascript
 const test = require('twintap/tape')
 test('test name', [
