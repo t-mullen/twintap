@@ -13,15 +13,15 @@ Write tests like tape [`tape`](https://github.com/substack/tape), except use `tw
 ```javascript
 const test = require('twintap/tape')
 test('test name', [
-	(t) => {
-		// test A-side of connection
-		t.pass()
-		t.end()
-	},
-	(t) => {
-		// test B-side of connection
-		t.pass()
-		t.end()
+  (t) => {
+    // test A-side of connection
+    t.pass()
+    t.end()
+  },
+  (t) => {
+    // test B-side of connection
+    t.pass()
+    t.end()
 }])
 ```
 
@@ -37,19 +37,19 @@ The sync server allows synchronizing peers with simple barriers.
 
 ```javascript
 test('test name', [
-	async (t) => {
-		// test WebRTC, Websockets, etc
-		await t.barrier('first barrier') // will not resolve until all peers have reached this point
-		t.send('A', 'test data') // send events
-		t.end()
-	},
-	async (t) => {
-		// test WebRTC, Websockets, etc
-		await t.barrier('first barrier') // will not resolve untill all peers have reached this point
-		t.receive('A', (data) => {
-					t.end()
-		})
-	}
+  async (t) => {
+    // test WebRTC, Websockets, etc
+    await t.barrier('first barrier') // will not resolve until all peers have reached this point
+    t.send('A', 'test data') // send events
+    t.end()
+  },
+  async (t) => {
+    // test WebRTC, Websockets, etc
+    await t.barrier('first barrier') // will not resolve untill all peers have reached this point
+    t.receive('A', (data) => {
+          t.end()
+    })
+  }
 ])
 ```
 
