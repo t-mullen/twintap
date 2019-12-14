@@ -75,7 +75,8 @@ function addExtraFns (t, testIndex) {
   }
   t.receive = (eventName, callback) => {
     onEvent(testIndex + '__' + eventName, callback)
-	}
+  }
+  t.instance = instanceID
 	socket.on('close', () => {
 		if (allDone) return
 		socketFailed = true
