@@ -149,7 +149,8 @@ function readLocalConfig (config) {
 }
 
 function readGlobalConfig (config) {
-  var filename = findNearestFile('.twintaprc') || path.join(os.homedir(), '.twintaprc')
+  var filename = findNearestFile('.twintaprc') || path.join(os.homedir(), '.twintaprc') ||
+                 findNearestFile('.airtaprc') || path.join(os.homedir(), '.airtaprc')
   if (fs.existsSync(filename)) {
     var globalConfig
     try {

@@ -25,7 +25,7 @@ test('test name', [
 }])
 ```
 
-Setup a `.twintap.yml` file. This is the equivalent of `.airtap.yml`, but `twintap` will run tests across all possible pairs of browsers.
+Setup a `.twintap.yml` or `.airtap.yml`.
 
 Run your tests:
 In Saucelabs: `twintap test/*.js`
