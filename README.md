@@ -87,7 +87,7 @@ Wait for an event from the other peer. Returns any deserialized data sent.
 - `eventName` is the name of the even to wait for.
 
 ### `t.instance`
-`0` or `1` depending on which side the test is running on. Useful tests that are nearly symmetrical.
+`0` or `1` depending on which side the test is running on. Useful for tests that are nearly symmetrical.
 
 ## Saucelabs
 `twintap` suports [SauceLabs](https://saucelabs.com/), just like `airtap`. It requires [Sauce Connect](https://wiki.saucelabs.com/display/DOCS/Basic+Sauce+Connect+Proxy+Setup).
