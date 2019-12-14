@@ -55,6 +55,18 @@ test('test name', [
 
 A barrier is automatically inserted before each test to ensure tests do not overlap.
 
+## Symmetrical Tests
+If both sides of the test are identical, just pass one function instead of duplicating code.
+```javascript
+test('test name', 
+  async (t) => {
+    // test WebRTC, Websockets, etc
+    await t.barrier('first barrier') // will not resolve until all peers have reached this point
+    t.send('A', 'test data') // send events
+    t.end()
+ })
+```
+
 ## API
 `twintap/tape` exposes all the features of `tape`, plus...
 

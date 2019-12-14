@@ -95,7 +95,11 @@ function twinTape (name, tests) {
     addExtraFns(t, testCount++)
     cachedEvents = {}
     await awaitBarrier('__testStart__' + testCount)
-    tests[instanceID](t)
+    if (typeof tests === 'function' || tests.length === 1) {
+      tests(t)
+    } else {
+      tests[instanceID](t)
+    }
   })
 }
 
