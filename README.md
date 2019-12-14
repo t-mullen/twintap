@@ -82,7 +82,7 @@ Send an event with serializable data to the other peer.
 - Optional `data` is any serializable data to send.
 
 ### `t.receive(eventName, (data) => {})`
-Wait for an event from the other peer. Returns any deserialized data sent.
+Wait for an event from the other peer. Callback is passed any deserialized data sent.
 
 - `eventName` is the name of the even to wait for.
 
