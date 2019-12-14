@@ -9,7 +9,7 @@ npm install -g twintap
 
 ## Usage
 
-Write tests like you would withh tape [`tape`](https://github.com/substack/tape), except use `twintap/tape` and pass an array of two test functions.
+Write tests like tape [`tape`](https://github.com/substack/tape), except use `twintap/tape` and pass an array of two test functions.
 ```javascript
 const test = require('twintap/tape')
 test('test name', [
@@ -34,7 +34,7 @@ With local browsers: `twintap --local test/*.js`
 In Node.js only: `twintap-node test/*.js`
 
 ## Synchronization
-The sync server allows you to synchronize both peers with simple barrier primitives. 
+The sync server allows synchronizing peers with simple barriers. 
 
 ```javascript
 test('test name', [
@@ -76,4 +76,4 @@ Wait for an event from the other peer. Returns any deserialized data sent.
 - `eventName` is the name of the even to wait for.
 
 ## Saucelabs
-`twintap` suports [SauceLabs](https://saucelabs.com/), just like `airtap`. You will need to [setup Sauce Connect](https://wiki.saucelabs.com/display/DOCS/Basic+Sauce+Connect+Proxy+Setup).
+`twintap` suports [SauceLabs](https://saucelabs.com/), just like `airtap`. It requires [Sauce Connect](https://wiki.saucelabs.com/display/DOCS/Basic+Sauce+Connect+Proxy+Setup).
