@@ -22,8 +22,7 @@ test('test name', [
 		// test B-side of connection
 		t.pass()
 		t.end()
-	}
-])
+}])
 ```
 
 Setup a `.twintap.yml` file. This is the equivalent of `.airtap.yml`, but `twintap` will run tests across all possible pairs of browsers.
