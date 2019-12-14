@@ -1,6 +1,6 @@
 # twintap
 
-[`airtap`](https://github.com/airtap/airtap) for pairwise interoperability testing.
+[`airtap`](https://github.com/airtap/airtap) for pairwise interoperability testing. Designed for WebRTC compatability testing.
 
 ## Install
 ```
