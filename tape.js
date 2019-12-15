@@ -71,7 +71,10 @@ function onEvent (eventName, callback) {
 
 function addExtraFns (t, testIndex) {
   t.barrier = (barrierName, timeout=30000) => {
-    return awaitBarrier('__testBarrier__' + testIndex + '__' + barrierName, timeout)
+    return awaitBarrier('__testBarrier__' + testIndex + '__' + barrierName, timeout).catch((err) => {
+      t.fail(err)
+      t.end()
+    })
   }
   t.send = (eventName, data) => {
     sendEvent(testIndex + '__' + eventName, data)
