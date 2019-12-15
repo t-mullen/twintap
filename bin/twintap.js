@@ -85,7 +85,8 @@ if (program.listBrowsers) {
   console.error(chalk.red('the browser version needs to be specified (via --browser-version)'))
   process.exit(1)
 } else {
-  config = readLocalConfig(config)
+  config = readLocalConfig('airtap', config)
+  config = readLocalConfig('twintap', config)
 
   // Overwrite browsers from command line arguments
   if (program.browserName) {
@@ -132,13 +133,13 @@ if (program.listBrowsers) {
   }
 }
 
-function readLocalConfig (config) {
-  var yaml = path.join(process.cwd(), '.twintap.yml')
-  var js = path.join(process.cwd(), 'twintap.config.js')
+function readLocalConfig (rootName, config) {
+  var yaml = path.join(process.cwd(), '.' + rootName + '.yml')
+  var js = path.join(process.cwd(), rootName + '.config.js')
   var yamlExists = fs.existsSync(yaml)
   var jsExists = fs.existsSync(js)
   if (yamlExists && jsExists) {
-    console.error(chalk.red('Both `.twintap.yaml` and `twintap.config.js` are found in the project directory, please choose one'))
+    console.error(chalk.red('Both `.' + rootName + '.yaml` and `' + rootName + '.config.js` are found in the project directory, please choose one'))
     process.exit(1)
   } else if (yamlExists) {
     return mergeConfig(config, readYAMLConfig(yaml))
@@ -149,8 +150,7 @@ function readLocalConfig (config) {
 }
 
 function readGlobalConfig (config) {
-  var filename = findNearestFile('.twintaprc') || path.join(os.homedir(), '.twintaprc') ||
-                 findNearestFile('.airtaprc') || path.join(os.homedir(), '.airtaprc')
+  var filename = findNearestFile('.twintaprc') || findNearestFile('.airtaprc') || path.join(os.homedir(), '.airtaprc')
   if (fs.existsSync(filename)) {
     var globalConfig
     try {
