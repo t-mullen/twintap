@@ -67,7 +67,6 @@ function onEvent (eventName, callback) {
 
 function addExtraFns (t, testIndex) {
   t.barrier = (barrierName) => {
-    t.comment('awaiting barrier "' + barrierName + '"')
     return awaitBarrier('__testBarrier__' + testIndex + '__' + barrierName)
   }
   t.send = (eventName, data) => {
