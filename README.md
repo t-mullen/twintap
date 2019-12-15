@@ -91,3 +91,7 @@ Wait for an event from the other peer. Callback is passed any deserialized data 
 
 ## Saucelabs
 `twintap` suports [SauceLabs](https://saucelabs.com/), just like `airtap`. It requires [Sauce Connect](https://wiki.saucelabs.com/display/DOCS/Basic+Sauce+Connect+Proxy+Setup).
+
+```
+./sc -u <SAUCE_USERNAME> -k <SAUCE_KEY> --no-ssl-bump-domains airtap.local
+```
