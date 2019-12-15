@@ -70,10 +70,11 @@ test('test name',
 ## API
 `twintap/tape` exposes all the features of `tape`, plus...
 
-### `await t.barrier(name)`
+### `await t.barrier(name, [timeout])`
 Wait until the other peer has also reached this barrier.
 
 - `name` is a string unique to the test case.
+- Optional `timeout` is the time to wait in milliseconds. Defaults to `30000`.
 
 ### `t.send(eventName, [data])`
 Send an event with serializable data to the other peer.

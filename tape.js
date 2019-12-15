@@ -24,15 +24,19 @@ const cachedBarriers = {}
 socket.on('__barrier__', ({ barrierName }) => {
   cachedBarriers[barrierName] = true
 })
-function awaitBarrier (_barrierName) {
+function awaitBarrier (_barrierName, timeout=30000) {
   return new Promise((resolve, reject) => {
     socket.sendEvent('__barrier__', { barrierName: _barrierName })
     if (cachedBarriers[_barrierName]) {
       delete cachedBarriers[_barrierName]
       resolve()
     }
+    let t = setTimeout(() => {
+      reject(new Error('barrier timed out'))
+    }, timeout)
     function onBarrier ({ barrierName }) {
       if (barrierName !== _barrierName) return
+      clearTimeout(t)
       socket.removeListener('__barrier__', onBarrier)
       resolve()
     }
@@ -66,8 +70,8 @@ function onEvent (eventName, callback) {
 }
 
 function addExtraFns (t, testIndex) {
-  t.barrier = (barrierName) => {
-    return awaitBarrier('__testBarrier__' + testIndex + '__' + barrierName)
+  t.barrier = (barrierName, timeout=30000) => {
+    return awaitBarrier('__testBarrier__' + testIndex + '__' + barrierName, timeout)
   }
   t.send = (eventName, data) => {
     sendEvent(testIndex + '__' + eventName, data)
