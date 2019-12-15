@@ -29,7 +29,7 @@ function awaitBarrier (_barrierName, timeout=30000) {
     socket.sendEvent('__barrier__', { barrierName: _barrierName })
     if (cachedBarriers[_barrierName]) {
       delete cachedBarriers[_barrierName]
-      resolve()
+      return resolve()
     }
     let t = setTimeout(() => {
       reject(new Error('barrier timed out'))
