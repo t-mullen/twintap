@@ -76,12 +76,14 @@ function addExtraFns (t, testIndex) {
     onEvent(testIndex + '__' + eventName, callback)
   }
   t.instance = instanceID
-	socket.on('close', () => {
+  function onClose () {
+    socket.removeListener('close', onClose)
 		if (allDone) return
 		socketFailed = true
 		t.fail('socket close')
 		t.end()
-	})
+  }
+	socket.on('close', onClose)
 }
 
 let testCount = 0
