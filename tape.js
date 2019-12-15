@@ -103,7 +103,10 @@ function twinTape (name, tests) {
 		}
     addExtraFns(t, testCount++)
     cachedEvents = {}
-    await awaitBarrier('__testStart__' + testCount)
+    await awaitBarrier('__testStart__' + testCount).catch(() => {
+      t.fail('test art barrier timed out')
+      t.end()
+    })
     if (typeof tests === 'function' || tests.length === 1) {
       tests(t)
     } else {
@@ -116,7 +119,9 @@ let allDone = false
 let socketFailed = false
 tape.onFinish(async () => {
 	allDone = true
-	await awaitBarrier('__testFinish__')	
+	await awaitBarrier('__testFinish__').catch(() => {
+	  socket.destroy()
+  })
 	socket.destroy()
 })
 
