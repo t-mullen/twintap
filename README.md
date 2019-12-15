@@ -30,7 +30,6 @@ Setup a `.twintap.yml` or `.airtap.yml`.
 Run your tests:
 In Saucelabs: `twintap test/*.js`
 With local browsers: `twintap --local test/*.js`
-In Node.js only: `twintap-node test/*.js`
 
 ## Synchronization
 The sync server allows synchronizing peers with simple barriers. 
