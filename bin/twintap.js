@@ -85,8 +85,8 @@ if (program.listBrowsers) {
   console.error(chalk.red('the browser version needs to be specified (via --browser-version)'))
   process.exit(1)
 } else {
-  config = readLocalConfig('airtap', config)
   config = readLocalConfig('twintap', config)
+  config = readLocalConfig('airtap', config)
 
   // Overwrite browsers from command line arguments
   if (program.browserName) {
