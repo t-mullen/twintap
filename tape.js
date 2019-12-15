@@ -103,7 +103,7 @@ function twinTape (name, tests) {
 		}
     addExtraFns(t, testCount++)
     cachedEvents = {}
-    await awaitBarrier('__testStart__' + testCount).catch(() => {
+    await awaitBarrier('__testStart__' + testCount, 100000).catch(() => {
       t.fail('test start barrier for test "' + name + '" timed out')
       t.end()
     })
